@@ -1,49 +1,75 @@
-<div class="container">
-  <div class="row">
-    <div class="col m6 s12">
-      <div class="card">
-        <div class="card-content">
-          <div class="card-title center">{{ ethanol.name }}</div>
+<div class="row">
+  <div class="col l6 m12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-title center">{{ ethanol.name }}</div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="ethanol_consume" [(ngModel)]="ethanol.consume" placeholder="Consumo no Etanol" type="number" />
-              <label for="ethanol_consume">Consumo</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="ethanol_consume" [(ngModel)]="ethanol.price" placeholder="Consumo no Etanol" type="number" />
-              <label for="ethanol_consume">Preço do litro do {{ethanol.name}}</label>
-            </div>
-          </div>
-
-          <div class="row" *ngIf="ethanol.value">
-            <div class="col s12">
-              <h6>Preço por KM rodado</h6>
-              <h5>{{ ethanol.value | currency:"R$ " }}</h5>
-            </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="ethanol_consume" [(ngModel)]="ethanol.consume" placeholder="Consumo do veículo" type="text" (ngModelChange)="run()" />
+            <label for="ethanol_consume">Consumo do veículo</label>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="col m6 s12">
-      <div class="card">
-        <div class="card-content">
-          <div class="card-title center">{{ gasoline.name }}</div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="ethanol_price" [(ngModel)]="ethanol.price" placeholder="Preço por litro" type="text" (ngModelChange)="run()" />
+            <label for="ethanol_price">Preço por litro</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <h6>Preço por KM rodado</h6>
+            <h5>
+              <span>R$&nbsp;</span>
+              <span *ngIf="ethanol.value"> {{ ethanol.value | currency }}</span>
+            </h5>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col s12">
+  <div class="col l6 m12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-title center">{{ gasoline.name }}</div>
 
-    <button class="btn waves-effect waves-light" (click)="build()">
-      <i class="material-icons left">build</i>
-      Calcular
-    </button>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="gasoline_consume" [(ngModel)]="gasoline.consume" placeholder="Consumo do veículo" type="text" (ngModelChange)="run()" />
+            <label for="gasoline_consume">Consumo do veículo</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="gasoline_price" [(ngModel)]="gasoline.price" placeholder="Preço por litro" type="text" (ngModelChange)="run()" />
+            <label for="gasoline_price">Preço por litro</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <h6>Preço por KM rodado</h6>
+            <h5>
+              <span>R$&nbsp;</span>
+              <span *ngIf="gasoline.value">{{ gasoline.value | currency }}</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<!--
+<div class="row">
+  <div class="col s12">
+
+  <button class="btn waves-effect waves-light lime" (click)="build()">
+    Calcular
+    <i class="material-icons left">build</i>
+  </button>
+</div>
+-->
